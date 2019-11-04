@@ -1,0 +1,53 @@
+<form #form="ngForm" (ngSubmit)="loggear(form)" class="text-dark">
+    <div class="col-md-6 mx-auto">
+        <div class="card">
+
+            <div class="card-header">
+                <span class="login100-form-title my-2">
+                    Iniciar Sesion
+                </span>
+            </div>
+
+            <div class="card-body">
+
+
+                <div class="form-group">
+                    <mat-form-field class="form-full-width">
+                        <input matInput type="email" placeholder="Email" name="email" [(ngModel)]="usuario.email" required #email="ngModel"
+                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$">
+                        <!-- <mat-hint *ngIf="email.errors != null">Ingrese su correo con el sgte. formato: correo@mailprovider.com</mat-hint> -->
+                        <mat-error *ngIf="email.errors?.pattern || form.submitted">
+                            Por favor ingresa un correo valido. Ejemplo: correo@mailprovider.com
+                        </mat-error>
+                        <mat-error *ngIf="email.errors?.required || email.errors?.required && form.submitted">
+                            Email es <strong>requerido</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-group">
+                    <mat-form-field class="form-full-width">
+                        <input matInput type="password" placeholder="Password"
+                            name="password" [(ngModel)]="usuario.password" #password="ngModel" required minlength="6">
+                        <!-- <mat-hint *ngIf="password.errors != null">Ingrese su correo con el sgte. formato: correo@mailprovider.com</mat-hint> -->
+                        <mat-error *ngIf="password.errors?.minlength || form.submitted">
+                            Debe tener como minimo 6 caracteres. Actual: {{ password.errors?.minlength?.actualLength }}
+                        </mat-error>
+                        <mat-error *ngIf="password.errors?.required || password.errors?.required && form.submitted">
+                            Password es <strong>requerido</strong>
+                        </mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-group">
+                    <button mat-raised-button type="submit" color="primary" class="btn-block">
+                        Iniciar sesion
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</form>

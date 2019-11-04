@@ -1,0 +1,22 @@
+<mat-toolbar class="mb-4">
+    <mat-toolbar-row>
+
+        <mat-icon class="puntero">menu</mat-icon>  
+        <span>Ventas App</span>
+        
+        <span class="espaciado"></span>
+        <button mat-button color="primary" routerLink="/login" *ngIf="!usuarioService.userToken">
+            <mat-icon>account_circle</mat-icon> Login
+        </button>
+        <button mat-button color="primary" routerLink="/registro" *ngIf="!usuarioService.userToken">
+            <mat-icon>person_add</mat-icon> Registrarse
+        </button>
+        <button mat-button color="primary" *ngIf="usuarioService.userToken" routerLink="/ventas">
+            <mat-icon>shop</mat-icon> Mis ventas
+        </button>
+        <button mat-button color="primary" *ngIf="usuarioService.userToken" (click)="logout()">
+            <mat-icon>logout</mat-icon> Logout
+        </button>
+    </mat-toolbar-row>
+
+</mat-toolbar>

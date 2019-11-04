@@ -1,0 +1,45 @@
+<div class="container">
+    <h4>Agregar Cliente</h4>
+    <hr>
+    <form #form="ngForm" (ngSubmit)="onSubmit(form)">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form group">
+                    <label class="lead">Nombre del Cliente</label>
+
+                    <input type="text" 
+                           name="nombre" 
+                           [(ngModel)]="cliente.nombre"
+                           #nombre="ngModel"
+                           class="form-control"
+                           required
+                           minlength="8"
+                           autofocus>
+                </div>
+
+                <div class="form group">
+                        <label class="lead">Cedula</label>
+    
+                        <input type="text" 
+                               name="cedula" 
+                               [(ngModel)]="cliente.cedula"
+                               #cedula="ngModel"
+                               class="form-control"
+                               required
+                               minlength="6">
+                </div>
+
+                <div class="form-group mt-3 text-right">
+                    <button type="submit" class="btn btn-success mr-1">
+                        Enviar                        
+                    </button>
+
+                    <button type="button" class="btn btn-danger" (click)="onClose()">
+                        Cerrar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

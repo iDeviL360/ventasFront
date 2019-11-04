@@ -1,0 +1,68 @@
+<div class="container">
+    <h4>Agregar items</h4>
+    <hr>
+    <form>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form group">
+                    <label class="lead">Lista Producto</label>
+
+                    <select name="productoid" class="form-control" tabindex="1" (change)="actualizarTxt($event.target.value)" [class.is-invalid]="productoSeleccionado == null">
+                        <option value="0">Seleccione un producto</option>
+                        <option value="{{ productoSeleccionado.productoid }}" *ngIf="productoSeleccionado != null" selected>{{ productoSeleccionado.descripcion }}</option>
+                        <option value="{{ producto.productoid }}" *ngFor="let producto of productos">
+                            {{ producto.descripcion }}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="form-group mt-3">
+                    <label class="lead">Costo Producto</label>
+                    <input type="text" 
+                           name="precio"
+                           class="form-control"
+                           placeholder="Precio Producto"
+                           value="{{ productoSeleccionado?.precio  | currency:'PYG' }}"
+                           readonly>
+                </div>
+
+
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label class="lead">Cod. Producto</label>
+                    <input class="form-control"
+                           type="text" 
+                           placeholder="Cod. Producto"
+                           name="codigo"
+                           value="{{ productoSeleccionado?.codigoproducto }}"
+                           readonly>
+                </div>
+
+                <div class="form-group mt-3">
+                    <label class="lead">Tipo de venta ?</label>
+                    <br>
+
+                    <input type="radio" value="portabilidad" name="tipo" id="porta"><label class="lead" for="porta">&nbsp; Portabilidad</label>
+
+                    
+                    <input type="radio" id="migra" value="migracion" name="tipo" class="ml-3"><label for="migra" class="lead">&nbsp; Migracion</label>
+
+                    <input type="radio" id="alta" value="alta" name="tipo" class="ml-3"><label for="alta" class="lead">&nbsp; Alta</label>
+                    <br>
+
+                    <input type="radio" id="up" value="upgrade" name="tipo"><label for="up" class="lead">&nbsp; Cambio de plan</label>
+
+                </div>
+            </div>
+        </div>
+        <div class="text-right">
+            <button type="submit" class="btn btn-success mr-1" (click)="agregarItem()">
+                Guardar
+            </button>
+            <button type="button" class="btn btn-danger" (click)="cerrar()">
+                Cerrar
+            </button>
+        </div>
+    </form>
+</div>
